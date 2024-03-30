@@ -1,4 +1,4 @@
-# be-obsessed
+# be-obsessed [TODO]
 
 Turn an unknown element into a custom element that extends [ob-session](https://github.com/bahrus/ob-session) that provides a gateway to an object stored in session storage.
 
@@ -14,5 +14,16 @@ So instead we can do:
 <patient-info be-obsessed></patient-info>
 ```
 
-By default the key will be the camelCased string of the tag name, but this can be configured.
+By default the key in session storage this will bind to will be  the tag name, but this can be configured (e.g. use the camelCased name).
+
+```html
+<patient-info key="localName.toCamelCase" be-obsessed></patient-info>
+```
+
+
+We can then sprinkle this the web component through the page, without the need for repeating the be-obsessed attribute:
+
+```html
+<patient-info></patient-info>
+```
 
