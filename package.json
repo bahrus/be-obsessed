@@ -25,7 +25,7 @@
   "dependencies": {
     "be-enhanced": "0.0.75",
     "be-hive": "0.0.143",
-    "ob-session": "0.0.8",
+    "ob-session": "0.0.9",
     "trans-render": "0.0.756",
     "xtal-element": "0.0.602"
   },

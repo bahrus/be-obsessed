@@ -11,17 +11,61 @@ The *ob-session* web component provides a declarative way of binding to a "store
 So instead we can do:
 
 ```html
-<patient-info onchange be-obsessed></patient-info>
+<patient-info onchange enh-be-obsessed></patient-info>
 ```
 
-By default the key in session storage this will bind to will be  the tag name, but this can be configured (e.g. use the camelCased name).
+By default the key in session storage where the object will be stored will simply be the local tag name -- "patient-info" in this case. But this can be configured in a number of ways.
+
+## Auto formatting the key
 
 ```html
-<patient-info key="${localName.toCamelCase}" be-obsessed onchange></patient-info>
+<patient-info key-format='camelCase' enh-be-obsessed onchange></patient-info>
 ```
 
+One of three options is supported:
 
-We can then sprinkle instances of this web component throughout the page, without the need for repeating any of the other attributes:
+1.  as-is (default)
+2.  camelCase 
+3.  CamelCase
+
+## Specifying the key
+
+```html
+<patient-info key=myPatientInfo enh-be-obsessed onchange></patient-info>
+```
+
+## Overriding the base class
+
+We can specify an alternate class, presumably one that subclasess ob-session, to use as the base class when auto-registering the custom element:
+
+### Approach 1 (DRY)
+
+Somewhere in the document (probably ideally within the head tag at the top), add a "link" tag (or any other tag really) with id be-fetch, and attribute data-inherits.  For example:
+
+```html
+<html>
+    <head>
+        <link rel=modulepreload id=be-obsessed data-inherits=my-custom-base-session-state-custom-element href=https://myapp.com/resources/be-obsessed.js >
+    </head>
+</html>
+```
+
+### Approach 2 (Highly customizable)
+
+We can specify the custom element name to inherit from within the adorned tag itself:
+
+
+```html
+<patient-info zero=name
+    enh-be-fetch 
+    inherits=my-custom-base-session-state-custom-element
+    onchange
+    href="https://my-website.com/prescriptions/patient/zero">
+</patient-info>
+
+If the key is specified, the key-format option is ignored.
+
+We can sprinkle instances of this web component throughout the page, without the need for repeating any of the other attributes:
 
 ```html
 <patient-info></patient-info>
