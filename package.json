@@ -1,11 +1,45 @@
 {
   "name": "be-obsessed",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Turns the tag it adorns into a web component that inherits from [ob-session](https://github.com/bahrus/ob-session)",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements",
+    "JSON",
+    "bind",
+    "observe"
+  ],
+  "main": "be-obsessed.js",
+  "module": "be-obsessed.js",
+  "exports": {
+    ".": "./be-obsessed.js",
+    "./be-obsessed": "./be-obsessed"
   },
-  "author": "",
+  "files": [
+    "*.js",
+    "types.d.ts"
+  ],
+  "types": "types.d.ts",
+  "dependencies": {
+    "be-enhanced": "0.0.75",
+    "be-hive": "0.0.143",
+    "ob-session": "0.0.8",
+    "trans-render": "0.0.756",
+    "xtal-element": "0.0.602"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.42.1",
+    "may-it-serve": "0.0.6",
+    "@power-elements/json-viewer": "2.1.1"
+  },
+  "scripts": {
+    "serve": "node node_modules/may-it-serve",
+    "test": "playwright test",
+    "safari": "npx playwright wk http://localhost:3030",
+    "update": "ncu -u && npm install"
+  },
+  "author": "anderson.bruce.b@gmail.com",
   "license": "MIT"
 }
